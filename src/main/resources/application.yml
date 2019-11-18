@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/security?autoReconnect=true
+    username: suom
+    password: suom
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+  devtools:
+    livereload:
+      enabled: true
+
+logging:
+  level:
+    liquibase: info
+    com.suom: trace
