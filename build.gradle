@@ -2,9 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.2.1.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
-	id 'pl.allegro.tech.build.axion-release' version '1.10.2'
 }
-project.version = scmVersion.version
 
 group = 'com.suom'
 version = '0.0.1-SNAPSHOT'
