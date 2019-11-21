@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.suom'
-version = '0.0.1-SNAPSHOT'
+// version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
@@ -38,3 +38,27 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+release {
+	git {
+		// We release off various branches to deploy to testing environments (possible a bad practice, but we can revise later).  To allow this, we need to
+		// reset the "requireBranch" otherwise we could only release off master
+		requireBranch = ''
+		pushToCurrentBranch = true
+	}
+}
+
+afterReleaseBuild.dependsOn uploadArchives
+
+task copyScripts(type: Copy) {
+
+	from "start_service.sh"
+	into "build/libs/"
+
+	from "stop_service.sh"
+	into "build/libs/"
+
+	print 'copy new sh scripts'
+}
+
+build.dependsOn(copyScripts)
